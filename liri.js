@@ -23,11 +23,7 @@ switch (action) {
         break;
 
     case 'spotify-this-song':
-        // if(nameLength){
         getSpotifySong(nameLength);
-        // }else{
-        // getSpotifySong("The Sign by Ace of Base");
-        // }
         break;
 
     case 'movie-this':
@@ -77,12 +73,12 @@ function getTweets() {
 
 }
 // spotify function
-function getSpotifySong(mySong) {    
-    // select a type and query
-    if(mySong.length == 1){
-      mySong = "Ace of Base - I saw the sign"
-    }
+function getSpotifySong(mySong) {
 
+    if (mySong.length == 1) {
+        mySong = "Ace of Base - I saw the sign"
+    }
+    // select a type and query
     spotify.search({ type: 'track', query: mySong }, function(error, data) {
         if (!error) {
             // make a for loop to get a song detail

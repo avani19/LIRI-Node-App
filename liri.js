@@ -77,13 +77,17 @@ function getTweets() {
 
 }
 // spotify function
-function getSpotifySong(mySong) {
+function getSpotifySong(mySong) {    
     // select a type and query
-    spotify.search({ type: 'track', query: mySong }, function(error, list) {
+    if(mySong.length == 1){
+      mySong = "Ace of Base - I saw the sign"
+    }
+
+    spotify.search({ type: 'track', query: mySong }, function(error, data) {
         if (!error) {
             // make a for loop to get a song detail
-            for (var i = 0; i < list.tracks.items.length; i++) {
-                var songInfo = list.tracks.items[i];
+            for (var i = 0; i < 1; i++) {
+                var songInfo = data.tracks.items[i];
                 // console log artist, song, preview URL and album
                 console.log("Artist: " + songInfo.artists[0].name);
                 console.log("Song: " + songInfo.name);
@@ -104,10 +108,6 @@ function getSpotifySong(mySong) {
         } else {
             console.log('Error!!');
         }
-        // if(mySong === " "){
-        //   console.log("The Sign by Ace of Base");
-        //   // getSpotifySong("The Sign by Ace of Base");
-        // }
     });
 }
 // make a function to get movie details
